@@ -2,6 +2,7 @@ import express from "express";
 import cookieParser from "cookie-parser";
 import morgan from "morgan";
 import authRouter from "./routes/auth.routes.js";
+import productRouter from "./routes/product.routes.js";
 import cors from "cors";
 import passport from "passport";
 import { Strategy as GoogleStrategy } from "passport-google-oauth20"
@@ -22,20 +23,19 @@ app.use(cors({
 
 app.use(passport.initialize());
 
-if (config.GOOGLE_CLIENT_ID && config.GOOGLE_CLIENT_SECRET) {
-    passport.use(new GoogleStrategy({
-        clientID: config.GOOGLE_CLIENT_ID,
-        clientSecret: config.GOOGLE_CLIENT_SECRET,
-        callbackURL: "/api/auth/google/callback"
-    }, (accessToken, refreshToken, profile, done) => {
-        return done(null, profile);
-    }))
-}
+passport.use(new GoogleStrategy({
+    clientID: config.GOOGLE_CLIENT_ID,
+    clientSecret: config.GOOGLE_CLIENT_SECRET,
+    callbackURL: "/api/auth/google/callback"
+}, (accessToken, refreshToken, profile, done) => {
+    return done(null, profile);
+}))
 
 app.get("/", (_req, res) => {
     res.status(200).json({ message: "Server is running" });
 });
 
 app.use("/api/auth", authRouter);
+app.use("/api/products", productRouter);
 
 export default app;
