@@ -1,3 +1,6 @@
+import productModel from "../models/product.model.js";
+import { uploadFile } from "../services/storage.service.js";
+
 export async function createProduct(req, res) {
 
     const { title, description, priceAmount, priceCurrency } = req.body;
@@ -27,5 +30,18 @@ export async function createProduct(req, res) {
         message: "Product created successfully",
         success: true,
         product
+    })
+}
+
+export async function getSellerProducts(req, res) {
+    const seller = req.user;
+
+    const products = await productModel.find({ seller: seller._id });
+
+
+    res.status(200).json({
+        message: "Products fetched successfully",
+        success: true,
+        products
     })
 }
