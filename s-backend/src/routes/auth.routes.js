@@ -22,4 +22,6 @@ router.get(
     googleCallback
 );
 
+router.get('/me', authenticateUser, getMe);
+
 export default router;
