@@ -3,7 +3,6 @@ import { config } from "../config/config.js";
 import userModel from "../models/user.model.js";
 
 
-
 export const authenticateUser = async (req, res, next) => {
     const token = req.cookies.token
 
@@ -29,6 +28,7 @@ export const authenticateUser = async (req, res, next) => {
         return res.status(401).json({ message: "Unauthorized" })
     }
 }
+
 
 export const authenticateSeller = async (req, res, next) => {
     const token = req.cookies.token
