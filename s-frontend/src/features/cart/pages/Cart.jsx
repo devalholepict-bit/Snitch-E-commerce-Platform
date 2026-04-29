@@ -45,7 +45,7 @@ const Cart = () => {
     /* ─── Helpers ─── */
     const getVariantDetails = (product, variantId) => {
         if (!product?.variants || !variantId) return null
-        return product.variants
+        return product.variants.find(v => v._id === variantId)
     }
 
     const getDisplayImage = (product, variant) => {
@@ -96,10 +96,6 @@ const Cart = () => {
     if (!cart?.items?.length) {
         return (
             <>
-                <link
-                    href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Inter:wght@300;400;500;600&display=swap"
-                    rel="stylesheet"
-                />
                 <div
                     className="min-h-screen flex flex-col"
                     style={{ backgroundColor: tokens.surface, fontFamily: "'Inter', sans-serif" }}
@@ -164,11 +160,6 @@ const Cart = () => {
 
     return (
         <>
-            {/* Google Fonts */}
-            <link
-                href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Inter:wght@300;400;500;600&display=swap"
-                rel="stylesheet"
-            />
 
             <div
                 className="min-h-screen pb-24 selection:bg-[#C9A96E]/30"

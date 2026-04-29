@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useAuth } from "../hook/useAuth";
-import { useNavigate } from 'react-router';
+import { useNavigate, Link } from 'react-router';
 import ContinueWithGoogle from '../components/ContinueWithGoogle';
 
 const Register = () => {
@@ -43,11 +43,6 @@ const Register = () => {
 
     return (
         <>
-            {/* Google Fonts */}
-            <link
-                href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Inter:wght@300;400;500;600&display=swap"
-                rel="stylesheet"
-            />
 
             <div
                 className="min-h-screen flex flex-col lg:flex-row selection:bg-[#C9A96E]/30"
@@ -286,15 +281,15 @@ const Register = () => {
                             {/* Footer Link */}
                             <p className="text-center text-[11px]" style={{ color: '#B5ADA3' }}>
                                 Already have an account?{' '}
-                                <a
-                                    href="/login"
+                                <Link
+                                    to="/login"
                                     className="transition-colors duration-200"
                                     style={{ color: '#7A6E63', textDecoration: 'underline', textUnderlineOffset: '3px' }}
                                     onMouseEnter={e => e.target.style.color = '#C9A96E'}
                                     onMouseLeave={e => e.target.style.color = '#7A6E63'}
                                 >
                                     Sign in
-                                </a>
+                                </Link>
                             </p>
                         </form>
                     </div>

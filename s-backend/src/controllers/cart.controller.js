@@ -172,8 +172,8 @@ export const createOrderController = async (req, res) => {
             images: item.product.variants.images || item.product.images,
             description: item.product.description,
             price: {
-                amount: item.product.variants.price.amount || item.product.price.amount,
-                currency: item.product.variants.price.currency || item.product.price.currency
+                amount: item.product.variants.price?.amount || item.product.price.amount,
+                currency: item.product.variants.price?.currency || item.product.price.currency
             }
         }))
     })

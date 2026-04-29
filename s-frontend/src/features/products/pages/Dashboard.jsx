@@ -14,11 +14,6 @@ const Dashboard = () => {
 
     return (
         <>
-            {/* Google Fonts */}
-            <link
-                href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Inter:wght@300;400;500;600&display=swap"
-                rel="stylesheet"
-            />
 
             <div
                 className="min-h-screen selection:bg-[#C9A96E]/30"
